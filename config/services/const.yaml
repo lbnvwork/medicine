@@ -1,0 +1,22 @@
+parameters:
+  roles:
+    0:
+      name: Админ
+      techName: ROLE_ADMIN
+      description: Администратор сайта
+      enabled: true
+    1:
+      name: Врач-консультант
+      techName: ROLE_DOCTOR_CONSULTANT
+      description: Врач-консультант
+      enabled: true
+    2:
+      name: Врач женской консультации
+      techName: ROLE_DOCTOR_HOSPITAL
+      description: Врач женской консультации
+      enabled: true
+    3:
+      name: Пациент
+      techName: ROLE_PATIENT
+      description: Пациент
+      enabled: true

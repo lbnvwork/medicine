@@ -1,0 +1,12 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit AuthUser{% endblock %}
+{% block h1 %}<h1>Edit AuthUser</h1>{% endblock %}
+{% block right %}
+
+    {{ include('admin/auth_user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('auth_user_index') }}">back to list</a>
+
+    {{ include('admin/auth_user/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit RiskFactor{% endblock %}
+{% block h1 %}<h1>Edit RiskFactor</h1>{% endblock %}
+{% block right %}
+    {{ include('admin/risk_factor/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('risk_factor_index') }}">back to list</a>
+
+    {{ include('admin/risk_factor/_delete_form.html.twig') }}
+{% endblock %}

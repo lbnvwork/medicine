@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Hospital index{% endblock %}
+{% block h1 %}<h1>Hospital index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Регион</th>
+                <th>Город</th>
+                <th>Адрес</th>
+                <th>Наименование</th>
+                <th>Телефон</th>
+                <th>Полное наименование</th>
+                <th>Используется</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hospital in hospitals %}
+            <tr>
+                <td>{{ hospital.region.name }}</td>
+                <td>{{ hospital.city ? hospital.city.name : '' }}</td>
+                <td>{{ hospital.address }}</td>
+                <td>{{ hospital.name }}</td>
+                <td>{{ hospital.phone }}</td>
+                <td>{{ hospital.description }}</td>
+                <td>{{ hospital.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('hospital_show', {'id': hospital.id}) }}">show</a>
+                    <a href="{{ path('hospital_edit', {'id': hospital.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hospital_new') }}">Create new</a>
+{% endblock %}

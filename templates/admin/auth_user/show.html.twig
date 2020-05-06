@@ -1,0 +1,57 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}AuthUser{% endblock %}
+{% block h1 %}<h1>AuthUser</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ auth_user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ auth_user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ auth_user.roles ? auth_user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ auth_user.password }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ auth_user.phone }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ auth_user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ auth_user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>PatronymicName</th>
+                <td>{{ auth_user.patronymicName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ auth_user.description }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ auth_user.enabled ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('auth_user_index') }}">back to list</a>
+
+    <a href="{{ path('auth_user_edit', {'id': auth_user.id}) }}">edit</a>
+
+    {{ include('auth_user/_delete_form.html.twig') }}
+{% endblock %}

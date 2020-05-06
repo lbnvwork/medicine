@@ -1,0 +1,37 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}RiskFactor index{% endblock %}
+{% block h1 %}<h1>RiskFactor index</h1>{% endblock %}
+{% block right %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Scores</th>
+            <th>Enabled</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for risk_factor in risk_factors %}
+            <tr>
+                <td>{{ risk_factor.id }}</td>
+                <td>{{ risk_factor.name }}</td>
+                <td>{{ risk_factor.scores }}</td>
+                <td>{{ risk_factor.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('risk_factor_show', {'id': risk_factor.id}) }}">show</a>
+                    <a href="{{ path('risk_factor_edit', {'id': risk_factor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('risk_factor_new') }}">Create new</a>
+{% endblock %}

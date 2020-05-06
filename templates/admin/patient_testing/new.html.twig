@@ -1,0 +1,9 @@
+{% extends 'admin/index.html.twig' %}
+{% block title %}New PatientTesting{% endblock %}
+{% block h1 %}<h1>Create new PatientTesting</h1>{% endblock %}
+{% block right %}
+
+    {{ include(template_path~'_form.html.twig') }}
+
+    <a href="{{ path('patient_testing_index') }}">back to list</a>
+{% endblock %}

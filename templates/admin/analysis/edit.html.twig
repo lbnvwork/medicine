@@ -1,0 +1,12 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit Analysis{% endblock %}
+{% block h1 %}<h1>Edit Analysis</h1>{% endblock %}
+{% block right %}
+
+    {{ include(template_path~'_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('analysis_index') }}">back to list</a>
+
+    {{ include(template_path~'_delete_form.html.twig') }}
+{% endblock %}

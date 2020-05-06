@@ -1,0 +1,37 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Measure{% endblock %}
+{% block h1 %}<h1>Measure</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ measure.id }}</td>
+            </tr>
+            <tr>
+                <th>NameRu</th>
+                <td>{{ measure.nameRu }}</td>
+            </tr>
+            <tr>
+                <th>NameEn</th>
+                <td>{{ measure.nameEn }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ measure.title }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ measure.enabled ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('measure_index') }}">back to list</a>
+
+    <a href="{{ path('measure_edit', {'id': measure.id}) }}">edit</a>
+
+    {{ include(template_path~'_delete_form.html.twig') }}
+{% endblock %}

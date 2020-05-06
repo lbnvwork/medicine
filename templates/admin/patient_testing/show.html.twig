@@ -1,0 +1,36 @@
+{% extends 'admin/index.html.twig' %}
+{% block title %}PatientTesting{% endblock %}
+{% block h1 %}<h1>PatientTesting</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ patient_testing.id }}</td>
+        </tr>
+        <tr>
+            <th>AnalysisDate</th>
+            <td>{{ patient_testing.analysisDate ? patient_testing.analysisDate|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>GestationalMinAge</th>
+            <td>{{ patient_testing.gestationalMinAge }}</td>
+        </tr>
+        <tr>
+            <th>GestationalMaxAge</th>
+            <td>{{ patient_testing.gestationalMaxAge }}</td>
+        </tr>
+        <tr>
+            <th>Processed</th>
+            <td>{{ patient_testing.processed ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('patient_testing_index') }}">back to list</a>
+
+    <a href="{{ path('patient_testing_edit', {'id': patient_testing.id}) }}">edit</a>
+
+    {{ include(template_path~'_delete_form.html.twig') }}
+{% endblock %}

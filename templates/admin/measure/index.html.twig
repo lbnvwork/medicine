@@ -1,0 +1,40 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Measure index{% endblock %}
+{% block h1 %}<h1>Measure index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NameRu</th>
+                <th>NameEn</th>
+                <th>Title</th>
+                <th>Enabled</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for measure in measures %}
+            <tr>
+                <td>{{ measure.id }}</td>
+                <td>{{ measure.nameRu }}</td>
+                <td>{{ measure.nameEn }}</td>
+                <td>{{ measure.title }}</td>
+                <td>{{ measure.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('measure_show', {'id': measure.id}) }}">show</a>
+                    <a href="{{ path('measure_edit', {'id': measure.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('measure_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}New RiskFactor{% endblock %}
+{% block h1 %}<h1>Create new RiskFactor</h1>{% endblock %}
+{% block right %}
+
+    {{ include('admin/risk_factor/_form.html.twig') }}
+
+    <a href="{{ path('risk_factor_index') }}">back to list</a>
+{% endblock %}

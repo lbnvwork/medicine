@@ -1,0 +1,50 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}AuthUser index{% endblock %}
+{% block h1 %}<h1>AuthUser index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Phone</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>PatronymicName</th>
+                <th>Description</th>
+                <th>Enabled</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for auth_user in auth_users %}
+            <tr>
+                <td>{{ auth_user.id }}</td>
+                <td>{{ auth_user.email }}</td>
+                <td>{{ auth_user.roles ? auth_user.roles|json_encode : '' }}</td>
+                <td>{{ auth_user.password }}</td>
+                <td>{{ auth_user.phone }}</td>
+                <td>{{ auth_user.firstName }}</td>
+                <td>{{ auth_user.lastName }}</td>
+                <td>{{ auth_user.patronymicName }}</td>
+                <td>{{ auth_user.description }}</td>
+                <td>{{ auth_user.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('auth_user_show', {'id': auth_user.id}) }}">show</a>
+                    <a href="{{ path('auth_user_edit', {'id': auth_user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('auth_user_new') }}">Create new</a>
+{% endblock %}

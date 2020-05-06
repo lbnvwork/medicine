@@ -1,0 +1,38 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}AnalysisRate index{% endblock %}
+{% block h1 %}<h1>AnalysisRate index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>RateMin</th>
+            <th>RateMax</th>
+            <th>Enabled</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for analysis_rate in analysis_rates %}
+            <tr>
+                <td>{{ analysis_rate.id }}</td>
+                <td>{{ analysis_rate.rateMin }}</td>
+                <td>{{ analysis_rate.rateMax }}</td>
+                <td>{{ analysis_rate.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('analysis_rate_show', {'id': analysis_rate.id}) }}">show</a>
+                    <a href="{{ path('analysis_rate_edit', {'id': analysis_rate.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('analysis_rate_new') }}">Create new</a>
+{% endblock %}

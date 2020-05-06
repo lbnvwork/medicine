@@ -1,0 +1,40 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Trimester index{% endblock %}
+{% block h1 %}<h1>Trimester index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Number</th>
+                <th>Enabled</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trimester in trimesters %}
+            <tr>
+                <td>{{ trimester.id }}</td>
+                <td>{{ trimester.name }}</td>
+                <td>{{ trimester.title }}</td>
+                <td>{{ trimester.number }}</td>
+                <td>{{ trimester.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('trimester_show', {'id': trimester.id}) }}">show</a>
+                    <a href="{{ path('trimester_edit', {'id': trimester.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('trimester_new') }}">Create new</a>
+{% endblock %}

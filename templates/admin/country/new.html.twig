@@ -1,0 +1,10 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}New Country{% endblock %}
+{% block h1 %}<h1>Create new Country</h1>{% endblock %}
+{% block right %}
+
+    {{ include('admin/country/_form.html.twig') }}
+
+    <a href="{{ path('country_index') }}">back to list</a>
+{% endblock %}

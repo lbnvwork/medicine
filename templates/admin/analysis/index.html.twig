@@ -1,0 +1,38 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Analysis index{% endblock %}
+{% block h1 %}<h1>Analysis index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Enabled</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for analysi in analyses %}
+            <tr>
+                <td>{{ analysi.id }}</td>
+                <td>{{ analysi.name }}</td>
+                <td>{{ analysi.description }}</td>
+                <td>{{ analysi.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('analysis_show', {'id': analysi.id}) }}">show</a>
+                    <a href="{{ path('analysis_edit', {'id': analysi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('analysis_new') }}">Create new</a>
+{% endblock %}

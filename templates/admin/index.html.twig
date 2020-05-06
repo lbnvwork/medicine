@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+{% block title %}Hello AdminController!
+{% endblock %}
+{% block body %}
+    <section id="admin">
+        <div class="row">
+            <div class="col-md-11">
+                {% block h1 %}<h1>Hello
+                    {{ controller_name }}! ✅</h1>{% endblock %}
+            </div>
+            <div class="col-md-1">
+                <a href="{{ path('app_logout') }}">Выйти</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {{ knp_menu_render('admin') }}
+            </div>
+            <div class="col-md-9">
+                {% block right %}{% endblock %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('admin') }}
+    {{ encore_entry_script_tags('select2entity') }}
+{% endblock %}

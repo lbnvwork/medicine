@@ -1,0 +1,35 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}RiskFactorType index{% endblock %}
+{% block h1 %}<h1>RiskFactorType index</h1>{% endblock %}
+{% block right %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Enabled</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for risk_factor_type in risk_factor_types %}
+            <tr>
+                <td>{{ risk_factor_type.id }}</td>
+                <td>{{ risk_factor_type.name }}</td>
+                <td>{{ risk_factor_type.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('risk_factor_type_show', {'id': risk_factor_type.id}) }}">show</a>
+                    <a href="{{ path('risk_factor_type_edit', {'id': risk_factor_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('risk_factor_type_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}AnalysisGroup index{% endblock %}
+{% block h1 %}<h1>Edit AnalysisGroup</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>FullName</th>
+                <th>Enabled</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for analysis_group in analysis_groups %}
+            <tr>
+                <td>{{ analysis_group.id }}</td>
+                <td>{{ analysis_group.name }}</td>
+                <td>{{ analysis_group.fullName }}</td>
+                <td>{{ analysis_group.enabled ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('analysis_group_show', {'id': analysis_group.id}) }}">show</a>
+                    <a href="{{ path('analysis_group_edit', {'id': analysis_group.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('analysis_group_new') }}">Create new</a>
+{% endblock %}

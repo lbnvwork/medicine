@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PatientTestingResult{% endblock %}
+
+{% block body %}
+    <h1>PatientTestingResult</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ patient_testing_result.id }}</td>
+            </tr>
+            <tr>
+                <th>Result</th>
+                <td>{{ patient_testing_result.result }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ patient_testing_result.enabled ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('patient_testing_result_index') }}">back to list</a>
+
+    <a href="{{ path('patient_testing_result_edit', {'id': patient_testing_result.id}) }}">edit</a>
+
+    {{ include('patient_testing_result/_delete_form.html.twig') }}
+{% endblock %}

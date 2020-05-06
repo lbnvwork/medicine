@@ -1,0 +1,33 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}AnalysisRate{% endblock %}
+{% block h1 %}<h1>AnalysisRate</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ analysis_rate.id }}</td>
+        </tr>
+        <tr>
+            <th>RateMin</th>
+            <td>{{ analysis_rate.rateMin }}</td>
+        </tr>
+        <tr>
+            <th>RateMax</th>
+            <td>{{ analysis_rate.rateMax }}</td>
+        </tr>
+        <tr>
+            <th>Enabled</th>
+            <td>{{ analysis_rate.enabled ? 'Yes' : 'No' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('analysis_rate_index') }}">back to list</a>
+
+    <a href="{{ path('analysis_rate_edit', {'id': analysis_rate.id}) }}">edit</a>
+
+    {{ include(template_path~'_delete_form.html.twig') }}
+{% endblock %}

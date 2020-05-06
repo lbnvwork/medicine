@@ -1,0 +1,42 @@
+{% extends 'admin/index.html.twig' %}
+{% block title %}PatientTesting index{% endblock %}
+{% block h1 %}<h1>PatientTesting index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>AnalysisDate</th>
+            <th>GestationalMinAge</th>
+            <th>GestationalMaxAge</th>
+            <th>Processed</th>
+            <th>Patient</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for patient_testing in patient_testings %}
+            <tr>
+                <td>{{ patient_testing.id }}</td>
+                <td>{{ patient_testing.analysisDate ? patient_testing.analysisDate|date('Y-m-d') : '' }}</td>
+                <td>{{ patient_testing.gestationalMinAge }}</td>
+                <td>{{ patient_testing.gestationalMaxAge }}</td>
+                <td>{{ patient_testing.processed ? 'Yes' : 'No' }}</td>
+                <td>{{ patient_testing.patient.authUser.lastName }}</td>
+                <td>
+                    <a href="{{ path('patient_testing_show', {'id': patient_testing.id}) }}">show</a>
+                    <a href="{{ path('patient_testing_edit', {'id': patient_testing.id}) }}">edit</a>
+                    <a href="{{ path('patient_testing_result_new', {'id': patient_testing.id}) }}">Create result</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#    <a href="{{ path('patient_testing_new') }}">Create new</a>#}
+{% endblock %}

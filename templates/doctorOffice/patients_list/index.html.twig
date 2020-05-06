@@ -1,0 +1,47 @@
+{% extends 'doctorOffice/index.html.twig' %}
+{% block content %}
+    <div class="content-wrapper__top">
+        <ul class="content-wrapper__nav">
+            <li><a class="active" href="#">Новые</a></li>
+            <li><a href="#">Основные</a></li>
+        </ul>
+        <div class="content-wrapper__select">
+            <select>
+                <option value="value1">Больницы</option>
+                <option value="value1">Больницы</option>
+                <option value="value1">Больницы</option>
+                <option value="value1">Больницы</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-wrapper table-pacients">
+        <table>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>ФИО</th>
+                <th>Больницы</th>
+                <th class="vertical">Возраст</th>
+                <th class="vertical">Недель</th>
+                <th>Диагноз</th>
+                <th>Показатели</th>
+            </tr>
+            </thead>
+            {% for key, patient in patients %}
+                <tr>
+                    <th>{{ key+1 }}</th>
+                    <th>{{ patient.authUser.lastName }}</th>
+                    <th>{{ patient.hospital.name }}</th>
+                    <th>25</th>
+                    <th>2</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            {% else %}
+                <tr>
+                    <th colspan="12">no records found</th>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

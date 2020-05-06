@@ -1,0 +1,109 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Patient{% endblock %}
+{% block h1 %}<h1>Patient</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Email</th>
+            <td>{{ patient.authUser.email }}</td>
+        </tr>
+        <tr>
+            <th>Roles</th>
+            <td>{{ patient.authUser.roles ? patient.authUser.roles|json_encode : '' }}</td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td>{{ patient.authUser.password }}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{ patient.authUser.phone }}</td>
+        </tr>
+        <tr>
+            <th>FirstName</th>
+            <td>{{ patient.authUser.firstName }}</td>
+        </tr>
+        <tr>
+            <th>LastName</th>
+            <td>{{ patient.authUser.lastName }}</td>
+        </tr>
+        <tr>
+            <th>PatronymicName</th>
+            <td>{{ patient.authUser.patronymicName }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ patient.authUser.description }}</td>
+        </tr>
+        <tr>
+            <th>Enabled</th>
+            <td>{{ patient.authUser.enabled ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>Snils</th>
+            <td>{{ patient.snils }}</td>
+        </tr>
+        <tr>
+            <th>InsuranceNumber</th>
+            <td>{{ patient.insuranceNumber }}</td>
+        </tr>
+        <tr>
+            <th>DateBirth</th>
+            <td>{{ patient.dateBirth ? patient.dateBirth|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>DateStartOfTreatment</th>
+            <td>{{ patient.dateStartOfTreatment ? patient.dateStartOfTreatment|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ patient.address }}</td>
+        </tr>
+        <tr>
+            <th>SmsInforming</th>
+            <td>{{ patient.smsInforming ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>EmailInforming</th>
+            <td>{{ patient.emailInforming ? 'Yes' : 'No' }}</td>
+        </tr>
+        <tr>
+            <th>ImportantComment</th>
+            <td>{{ patient.importantComment }}</td>
+        </tr>
+        <tr>
+            <th>ConcomitantDisease</th>
+            <td>{{ patient.concomitantDisease }}</td>
+        </tr>
+        <tr>
+            <th>Passport</th>
+            <td>{{ patient.passport }}</td>
+        </tr>
+        <tr>
+            <th>Diagnoses</th>
+            <td>
+                {% for diagnosis in patient.diagnosis %}
+                    <div>{{ diagnosis.name }}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>RiskFactors</th>
+            <td>
+                {% for factor in patient.riskFactor %}
+                    <div>{{ factor.name }}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('patient_index') }}">back to list</a>
+
+    <a href="{{ path('patient_edit', {'id': patient.id}) }}">edit</a>
+
+    {{ include('admin/patient/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit Polimorphism{% endblock %}
+{% block h1 %}<h1>Edit Polimorphism</h1>{% endblock %}
+{% block right %}
+
+    {{ include('admin/polimorphism/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('polimorphism_index') }}">back to list</a>
+
+    {{ include('admin/polimorphism/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Polimorphism index{% endblock %}
+{% block h1 %}<h1>Polimorphism index</h1>{% endblock %}
+{% block right %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Enabled</th>
+            <th>Description</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for polimorphism in polimorphisms %}
+            <tr>
+                <td>{{ polimorphism.id }}</td>
+                <td>{{ polimorphism.name }}</td>
+                <td>{{ polimorphism.title }}</td>
+                <td>{{ polimorphism.enabled ? 'Yes' : 'No' }}</td>
+                <td>{{ polimorphism.description }}</td>
+                <td>
+                    <a href="{{ path('polimorphism_show', {'id': polimorphism.id}) }}">show</a>
+                    <a href="{{ path('polimorphism_edit', {'id': polimorphism.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('polimorphism_new') }}">Create new</a>
+{% endblock %}

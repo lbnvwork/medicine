@@ -1,0 +1,10 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}New AnalysisGroup{% endblock %}
+{% block h1 %}<h1>Create new AnalysisGroup</h1>{% endblock %}
+{% block right %}
+
+    {{ include(template_path~'_form.html.twig') }}
+
+    <a href="{{ path('analysis_group_index') }}">back to list</a>
+{% endblock %}
